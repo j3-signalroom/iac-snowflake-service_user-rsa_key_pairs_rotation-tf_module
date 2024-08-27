@@ -23,7 +23,7 @@ locals {
     now = timestamp()
     hour_count = var.day_count*24
 
-    number_of_rsa_key_pairs_to_retain = 2
+    number_of_rsa_key_pairs_to_retain = 1
     sorted_dates = sort(time_rotating.rsa_key_pair_rotations.*.rfc3339)
     dates_and_count = zipmap(time_rotating.rsa_key_pair_rotations.*.rfc3339, range(number_of_rsa_key_pairs_to_retain))
     latest_api_key = lookup(local.dates_and_count, local.sorted_dates[0])

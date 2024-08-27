@@ -41,17 +41,14 @@ resource "aws_cloudwatch_log_group" "lambda_log_group" {
   retention_in_days = 7
 }
 
-# Invoke the Lambda function using Terraform's local-exec provisioner
-resource "null_resource" "invoke_lambda" {
-  provisioner "local-exec" {
-    command = <<EOT
-      aws lambda invoke \
-        --function-name ${aws_lambda_function.lambda_ecr.function_name} \
-        --region ${var.aws_region} \
-        --payload '{}' \
-        response.json
-    EOT
-  }
+# Lambda function invocation
+resource "aws_lambda_invocation" "lambda_ecr" {
+  function_name = aws_lambda_function.lambda_ecr.function_name
+
+  input = jsonencode({
+    user = var.snowflake_user
+    account = var.aws_account_id
+  })
 
   depends_on = [aws_lambda_function.lambda_ecr]
 
