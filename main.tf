@@ -1,9 +1,9 @@
 terraform {
     cloud {
-        organization ="<TERRAFORM CLOUD ORGANIZATION NAME>"
+        organization ="signalroom"
 
         workspaces {
-            name = "<TERRAFORM CLOUD ORGANIZATION's WORKSPACE NAME>"
+            name = "snowflake-user-rsa-key-generator-workspace"
         }
   }
 
