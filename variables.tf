@@ -23,9 +23,3 @@ variable "day_count" {
         error_message = "Rolling day count, `day_count`, must be greater than or equal to 1."
     }
 }
-
-variable "rsa_key_pair_display_name" {
-    description = "A descriptive name for the RSA key pair."
-    type = string
-    default = "RSA key pair - {date}"
-}

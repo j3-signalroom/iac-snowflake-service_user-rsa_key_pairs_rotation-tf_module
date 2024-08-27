@@ -22,14 +22,15 @@ To customize this module for your specific use case, you can leverage its [input
 In the [main.tf](main.tf) replace **`<TERRAFORM CLOUD ORGANIZATION NAME>`** in the `terraform.cloud` block with your [Terraform Cloud Organization Name](https://developer.hashicorp.com/terraform/cloud-docs/users-teams-organizations/organizations) and **`<TERRAFORM CLOUD ORGANIZATION's WORKSPACE NAME>`** in the `terraform.cloud.workspaces` block with your [Terraform Cloud Organization's Workspaces Name](https://developer.hashicorp.com/terraform/cloud-docs/workspaces).
 
 ### Module Input Variables
-A Terraform configuration provides values for the module input variables to initiate the creation and rotation of the RSA key pairs.  Below are the input variables:
+
+To initiate the creation and rotation of RSA key pairs, specify the following input variables in your Terraform configuration:
+
 Variable|Description
 -|-
 `aws_region`|The AWS Region.
 `aws_account_id`|The AWS Account ID.
 `snowflake_user`|The Snowflake User.
 `day_count`|How many day(s) should the RSA key pair be rotated for.
-`rsa_key_pair_display_name`|A descriptive name for the RSA key pair.
 
 ### Module Output Variables
 This module does not output variables through the `outputs.tf` file.  Instead, all sensitive data is securely stored directly in AWS Secrets Manager to ensure robust security and prevent exposure.
