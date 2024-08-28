@@ -22,17 +22,12 @@ resource "aws_iam_role_policy_attachment" "lambda_exec_policy_attach" {
 
 # Lambda function
 resource "aws_lambda_function" "lambda_function" {
-  function_name = local.function_name
-
-  # Provide the IAM role
-  role = aws_iam_role.lambda_function_role.arn
-
-  # Specify the container image URI from ECR
-  image_uri = "${var.aws_account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/${local.repo_name}"
-
-  # Specify the amount of memory and timeout
-  memory_size = 128
-  timeout     = 30
+  function_name = "rsa_key_pairs-generator"
+  handler       = "rsa_key_pairs-generator.lambda_handler"
+  role          = aws_iam_role.lambda_function_role.arn
+  image_uri     = "${var.aws_account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/${local.repo_name}"
+  memory_size   = 128
+  timeout       = 30
 }
 
 # Create a CloudWatch log group for the Lambda function
