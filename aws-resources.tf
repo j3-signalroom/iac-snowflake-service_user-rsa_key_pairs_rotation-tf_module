@@ -61,7 +61,7 @@ resource "aws_lambda_function" "lambda_function" {
   package_type  = "Image"
   image_uri     = local.repo_uri
   memory_size   = 128
-  timeout       = 30
+  timeout       = 900
 }
 
 # Create a CloudWatch log group for the Lambda function
