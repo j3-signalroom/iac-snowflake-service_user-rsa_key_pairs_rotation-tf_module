@@ -16,8 +16,9 @@ terraform {
 }
 
 locals {
-    repo_name = "iac-snowflake-user-rsa_key_pairs_generator"
-    repo_uri = "${var.aws_account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/${local.repo_name}"
+    repo_name    = "iac-snowflake-user-rsa_key_pairs_generator"
+    repo_uri     = "${var.aws_account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/${local.repo_name}"
+    ecr_repo_uri = "arn:aws:ecr:${var.aws_region}:${var.aws_account_id}:repository/${local.repo_name}"
 
     now = timestamp()
     hour_count = var.day_count*24
