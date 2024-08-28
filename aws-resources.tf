@@ -47,8 +47,4 @@ resource "aws_lambda_invocation" "lambda_function" {
   })
 
   depends_on = [aws_lambda_function.lambda_function]
-
-  lifecycle {
-    replace_triggered_by = [time_static.rsa_key_pair_rotations[count.index]]
-  }
 }
