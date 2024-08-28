@@ -38,7 +38,7 @@ resource "aws_iam_policy" "lambda_exec_policy" {
           "ecr:BatchCheckLayerAvailability"
         ],
         Effect   = "Allow",
-        Resource = "arn:aws:ecr:${aws_region}:${aws_account_id}:repository/${local.repo_name}"
+        Resource = local.ecr_repo_uri
       },
       {
         Action = "ecr:GetAuthorizationToken",
