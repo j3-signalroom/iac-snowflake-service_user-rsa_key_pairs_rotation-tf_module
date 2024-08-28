@@ -5,16 +5,17 @@ The format is base on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), 
 
 ## [0.02.02.000] - 2024-08-28
 ### Fixed
--  Specified the entry point to the Lambda function.
--  Specified the runtime of the Lambda function.
+- Specified the entry point to the Lambda function.
+- Specified the runtime of the Lambda function.
+- Removed `replace_triggered_by = [time_static.rsa_key_pair_rotations[count.index]]` from `resource "aws_lambda_invocation" "lambda_function" {}`.
 
 ## [0.02.01.000] - 2024-08-28
 ### Fixed
--  Was not referencing local variables properly.
+- Was not referencing local variables properly.
 
 ## [0.02.00.000] - 2024-08-27
 ### Fixed
--  Passing the Snowflake Account identifier instead of the AWS Account ID.
+- Passing the Snowflake Account identifier instead of the AWS Account ID.
 
 ## [0.01.00.000] - 2024-08-27
 ### Added
