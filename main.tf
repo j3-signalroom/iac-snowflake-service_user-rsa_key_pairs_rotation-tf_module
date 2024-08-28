@@ -16,7 +16,7 @@ terraform {
 }
 
 locals {
-    repo_name = "iac-snowflake_user-rsa_key_generator"
+    repo_name = "iac-snowflake-user-rsa_key_pairs_generator"
     repo_uri = "${var.aws_account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/${local.repo_name}"
 
     now = timestamp()
