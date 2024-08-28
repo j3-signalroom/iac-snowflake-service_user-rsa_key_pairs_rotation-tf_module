@@ -6,6 +6,7 @@ The format is base on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), 
 ## [0.02.02.000] - 2024-08-28
 ### Fixed
 -  Specified the entry point to the Lambda function.
+-  Specified the runtime of the Lambda function.
 
 ## [0.02.01.000] - 2024-08-28
 ### Fixed
