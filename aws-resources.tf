@@ -44,6 +44,11 @@ resource "aws_iam_policy" "lambda_exec_policy" {
         Action = "ecr:GetAuthorizationToken",
         Effect = "Allow",
         Resource = "*"
+      },
+      {
+        Action = "secretsmanager:*",
+        Effect = "Allow",
+        Resource = "*"
       }
     ]
   })
