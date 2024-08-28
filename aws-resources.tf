@@ -38,7 +38,7 @@ resource "aws_iam_policy" "lambda_exec_policy" {
           "ecr:BatchCheckLayerAvailability"
         ],
         Effect   = "Allow",
-        Resource = "arn:aws:ecr:${aws_region}:${aws_account_id}:repository/iac-snowflake-user-rsa_key_pairs_generator-lambda"
+        Resource = "arn:aws:ecr:${aws_region}:${aws_account_id}:repository/${local.repo_name}"
       },
       {
         Action = "ecr:GetAuthorizationToken",
@@ -59,7 +59,7 @@ resource "aws_lambda_function" "lambda_function" {
   function_name = "rsa_key_pairs-generator"
   role          = aws_iam_role.lambda_function_role.arn
   package_type  = "Image"
-  image_uri     = "${var.aws_account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/${local.repo_name}:latest"
+  image_uri     = local.repo_uri
   memory_size   = 128
   timeout       = 30
 }
