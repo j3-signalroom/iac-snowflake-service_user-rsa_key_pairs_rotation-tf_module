@@ -13,8 +13,8 @@ variable "snowflake_account" {
     type        = string
 }
 
-variable "snowflake_user" {
-    description = "The Snowflake User."
+variable "service_account_user" {
+    description = "The Snowflake service account user."
     type        = string
 }
 
