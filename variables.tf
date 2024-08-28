@@ -8,6 +8,11 @@ variable "aws_account_id" {
     type        = string
 }
 
+variable "snowflake_account" {
+    description = "The Snowflake Account."
+    type        = string
+}
+
 variable "snowflake_user" {
     description = "The Snowflake User."
     type        = string

@@ -52,6 +52,7 @@ To customize this module for your specific use case, you can leverage its [input
     -|-
     `aws_region`|The AWS Region the Terraform configuration uses.
     `aws_account_id`|The AWS Account ID the Terraform configuration uses.
+    `snowflake_account`|The Snowflake Account identifer issued to your organization.
     `snowflake_user`|The Snowflake User who is to be assigned the RSA key pairs for its authentication.
     `day_count`|How many day(s) should the RSA key pairs be rotated for.
 
