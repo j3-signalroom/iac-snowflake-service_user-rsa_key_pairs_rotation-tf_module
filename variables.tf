@@ -9,12 +9,12 @@ variable "aws_account_id" {
 }
 
 variable "snowflake_account" {
-    description = "The Snowflake Account."
+    description = "The Snowflake Account identifer issued to your organization."
     type        = string
 }
 
 variable "service_account_user" {
-    description = "The Snowflake service account user."
+    description = "The Snowflake service account user who is to be assigned the RSA key pairs for its authentication."
     type        = string
 }
 
