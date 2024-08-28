@@ -57,7 +57,7 @@ resource "aws_iam_role_policy_attachment" "lambda_exec_policy_attachment" {
 # Lambda function
 resource "aws_lambda_function" "lambda_function" {
   function_name = "rsa_key_pairs-generator"
-  role          = aws_iam_role.lambda_function_role.arn
+  role          = aws_iam_role.lambda_exec.arn
   package_type  = "Image"
   image_uri     = local.repo_uri
   memory_size   = 128
