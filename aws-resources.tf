@@ -26,6 +26,7 @@ resource "aws_lambda_function" "lambda_function" {
   handler       = "rsa_key_pairs-generator.lambda_handler"
   role          = aws_iam_role.lambda_function_role.arn
   image_uri     = "${var.aws_account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/${local.repo_name}"
+  runtime       = "python3.11" 
   memory_size   = 128
   timeout       = 30
 }
