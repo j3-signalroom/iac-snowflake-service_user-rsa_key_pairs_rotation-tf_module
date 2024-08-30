@@ -87,6 +87,6 @@ resource "aws_lambda_invocation" "lambda_function" {
   })
 
   lifecycle {
-        replace_triggered_by = [time_static.api_key_rotations[count.index]]
-    }
+    replace_triggered_by = [time_static.rsa_key_pair_rotations[count.index]]
+  }
 }
