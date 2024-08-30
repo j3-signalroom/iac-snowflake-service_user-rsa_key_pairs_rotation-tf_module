@@ -59,8 +59,8 @@ To customize this module for your specific use case, you can leverage its [input
     e. **Output Variables:**
     Output Variable|Description
     -|-
-    `active_rsa_key_pair`|Specifies the current active RSA key pair to be used for new logins.
-    `all_rsa_key_pairs`|Specifies all RSA key pairs sorted by creation date.  With the current active RSA key pair being the 1st in the collection.
+    `active_rsa_public_key`|Specifies the current active RSA public key.
+    `active_rsa_public_key_number`|Specifies current active RSA public key number.
 
 ## Resources
 [Snowfalke key pair authentication and key pair rotation](https://docs.snowflake.com/en/user-guide/key-pair-auth)
