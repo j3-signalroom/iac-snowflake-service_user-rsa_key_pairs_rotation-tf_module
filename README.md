@@ -56,7 +56,11 @@ To customize this module for your specific use case, you can leverage its [input
     `service_account_user`|The Snowflake service account user who is to be assigned the RSA key pairs for its authentication.
     `day_count`|How many day(s) should the RSA key pairs be rotated for.
 
-    > This module does not output variables through the `outputs.tf` file.  Instead, all sensitive data is securely stored directly in AWS Secrets Manager to ensure robust security and prevent exposure.
+    e. **Output Variables:**
+    Output Variable|Description
+    -|-
+    `active_rsa_key_pair`|Specifies the current active RSA key pair to be used for new logins.
+    `all_rsa_key_pairs`|Specifies all RSA key pairs sorted by creation date.  With the current active RSA key pair being the 1st in the collection.
 
 ## Resources
 [Snowfalke key pair authentication and key pair rotation](https://docs.snowflake.com/en/user-guide/key-pair-auth)

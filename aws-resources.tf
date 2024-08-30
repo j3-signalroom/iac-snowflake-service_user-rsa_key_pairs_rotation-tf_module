@@ -81,9 +81,8 @@ resource "aws_lambda_invocation" "lambda_function" {
   function_name = aws_lambda_function.lambda_function.function_name
 
   input = jsonencode({
-    key_pair_index = count.index
-    user           = var.service_account_user
-    account        = var.snowflake_account
+    user    = var.service_account_user
+    account = var.snowflake_account
   })
 
   lifecycle {

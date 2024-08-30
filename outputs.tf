@@ -1,9 +1,9 @@
-output "active_rsa_key_pair" {
-    value       = aws_lambda_invocation.lambda_function[local.latest_api_key]
-    description = ""
+output "active_key_number" {
+    value       = local.latest_rsa_public_key_number
+    description = "The current active RSA public key number."
 }
 
-output "all_rsa_key_pairs" {
-    value       = [for d in local.sorted_dates : confluent_api_key.resouce_api_key[lookup(local.dates_and_count, d)]]
-    description = "All RSA key pairs sorted by creation date.  With the current active RSA key pair being the 1st in the collection."
+output "active_rsa_public_key" {
+    value       = count.index == 1 ? jsondecode(aws_lambda_invocation.lambda_function.function_name)["rsa_public_key_1"] : jsondecode(aws_lambda_invocation.lambda_function.function_name)["rsa_public_key_2"]
+    description = "The currently active RSA public key."
 }

@@ -21,13 +21,14 @@ locals {
     repo_uri     = "${var.aws_account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/${local.repo_name}:latest"
     ecr_repo_uri = "arn:aws:ecr:${var.aws_region}:${var.aws_account_id}:repository/${local.repo_name}"
 
-    now = timestamp()
+    now        = timestamp()
     hour_count = var.day_count*24
 
     # As of 2024-08-28, Snowflake only allows up two RSA key pairs that can be rotated
     number_of_rsa_key_pairs_to_retain = 2
 
-    sorted_dates = sort(time_rotating.rsa_key_pair_rotations.*.rfc3339)
-    dates_and_count = zipmap(time_rotating.rsa_key_pair_rotations.*.rfc3339, range(local.number_of_rsa_key_pairs_to_retain))
-    latest_api_key = lookup(local.dates_and_count, local.sorted_dates[0])
+    sorted_dates                 = sort(time_rotating.rsa_key_pair_rotations.*.rfc3339)
+    dates_and_count              = zipmap(time_rotating.rsa_key_pair_rotations.*.rfc3339, range(local.number_of_rsa_key_pairs_to_retain))
+    latest_rsa_public_key        = lookup(local.dates_and_count, local.sorted_dates[0])
+    latest_rsa_public_key_number = index(local.dates_and_count, local.sorted_dates[0])
 }
