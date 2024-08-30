@@ -77,12 +77,16 @@ resource "aws_cloudwatch_log_group" "lambda_log_group" {
 
 # Lambda function invocation
 resource "aws_lambda_invocation" "lambda_function" {
+  count         = local.number_of_rsa_key_pairs_to_retain
   function_name = aws_lambda_function.lambda_function.function_name
 
   input = jsonencode({
-    user = var.service_account_user
-    account = var.snowflake_account
+    key_pair_index = count.index
+    user           = var.service_account_user
+    account        = var.snowflake_account
   })
 
-  depends_on = [aws_lambda_function.lambda_function]
+  lifecycle {
+        replace_triggered_by = [time_static.api_key_rotations[count.index]]
+    }
 }
