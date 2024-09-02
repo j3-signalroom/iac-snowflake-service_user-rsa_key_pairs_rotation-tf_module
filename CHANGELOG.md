@@ -5,7 +5,7 @@ The format is base on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), 
 
 ## [0.20.00.000] - 2024-09-02
 ### Added
-- Pass performance parameters to the AWS Lambda to manage its performance.
+- Enable the passing of performance parameters to the customize AWS Lambda.
 
 ### Changed
 - Updated the description of the module's functionality.
