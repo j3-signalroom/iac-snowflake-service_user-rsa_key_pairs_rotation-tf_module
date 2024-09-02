@@ -65,14 +65,14 @@ resource "aws_lambda_function" "lambda_function" {
   role          = aws_iam_role.lambda_exec.arn
   package_type  = "Image"
   image_uri     = local.repo_uri
-  memory_size   = 128
-  timeout       = 900
+  memory_size   = var.aws_lambda_memory_size
+  timeout       = var.aws_lambda_timeout
 }
 
 # Create a CloudWatch log group for the Lambda function
 resource "aws_cloudwatch_log_group" "lambda_log_group" {
   name              = "/aws/lambda/${aws_lambda_function.lambda_function.function_name}"
-  retention_in_days = 7
+  retention_in_days = var.aws_log_retention_in_days
 }
 
 # Lambda function invocation
