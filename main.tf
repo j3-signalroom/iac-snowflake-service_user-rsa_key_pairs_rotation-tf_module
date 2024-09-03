@@ -29,6 +29,5 @@ locals {
 
     sorted_dates                 = sort(time_rotating.rsa_key_pair_rotations.*.rfc3339)
     dates_and_count              = zipmap(time_rotating.rsa_key_pair_rotations.*.rfc3339, range(local.number_of_rsa_key_pairs_to_retain))
-    latest_rsa_public_key        = lookup(local.dates_and_count, local.sorted_dates[0])
-    latest_rsa_public_key_number = index(local.dates_and_count, local.sorted_dates[0])
+    latest_rsa_public_key_number = lookup(local.dates_and_count, local.sorted_dates[0])
 }
