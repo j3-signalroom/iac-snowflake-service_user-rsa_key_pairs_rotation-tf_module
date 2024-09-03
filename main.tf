@@ -3,7 +3,7 @@ terraform {
         organization ="signalroom"
 
         workspaces {
-            name = "snowflake-user-rsa-key-generator-workspace"
+            name = "snowflake-resources-workspace"
         }
   }
 
