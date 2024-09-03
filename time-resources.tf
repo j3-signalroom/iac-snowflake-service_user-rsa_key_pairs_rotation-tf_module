@@ -2,7 +2,7 @@
 # This controls each key's rotations
 resource "time_rotating" "rsa_key_pair_rotations" {
     rotation_days = var.day_count*local.number_of_rsa_key_pairs_to_retain
-    rfc3339 = timeadd(local.now, format("-%sh", (count.index)*local.hour_count))
+    rfc3339 = timeadd(local.now, format("-%sh", local.hour_count))
 }
 
 # Store the retain RSA key pairs and the time when the rotation needs to accord.  In order, to 
