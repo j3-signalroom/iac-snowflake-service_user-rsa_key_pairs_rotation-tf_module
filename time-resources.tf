@@ -11,5 +11,5 @@ resource "time_rotating" "rsa_key_pair_rotations" {
 # https://github.com/hashicorp/terraform-provider-time/issues/118
 resource "time_static" "rsa_key_pair_rotations" {
     count   = local.number_of_rsa_key_pairs_to_retain
-    rfc3339 = time_rotating.api_key_rotations[count.index].rfc3339
+    rfc3339 = time_rotating.rsa_key_pair_rotations[count.index].rfc3339
 }
