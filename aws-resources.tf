@@ -4,10 +4,10 @@ resource "aws_secretsmanager_secret" "public_keys" {
 
 resource "aws_secretsmanager_secret_version" "public_keys" {
     secret_id     = aws_secretsmanager_secret.public_keys.id
-    secret_string = jsonencode({"${root_secret_account_key}": "",
-                                "${root_secret_user_key}": "",
-                                "${root_secret_rsa_public_key_1}": "",
-                                "${root_secret_rsa_public_key_2}": ""})
+    secret_string = jsonencode({"account": "",
+                                "user": "",
+                                "rsa_public_key_1": "",
+                                "rsa_public_key_2": ""})
 }
 
 resource "aws_secretsmanager_secret" "private_key_1" {
