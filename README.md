@@ -70,11 +70,10 @@ This flexibility makes the module highly reusable and easier to integrate into v
     `aws_lambda_timeout`|_**(Optional and defaults to 900 seconds)**_  Lambda runs your code for a set amount of time before timing out. Timeout is the maximum amount of time in seconds that a Lambda function can run. The default value for this setting is 3 seconds, but you can adjust this in increments of 1 second up to a maximum value of 900 seconds (15 minutes).
     `aws_log_retention_in_days`|_**(Optional and defaults to 7 days)**_  Specifies the number of days you want to retain log events in the specified log group. Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1096, 1827, 2192, 2557, 2922, 3288, 3653, and 0. If you select 0, the events in the log group are always retained and never expire.
 
-    e. **Output Variables:**  These output variables allow data produced by the module to be exposed to the parent module (the configuration that calls the module), making it possible to use the results of the module's actions elsewhere in the Terraform deployment.
+    e. **Output Variable(s):**  The output variable(s) allow data produced by the module to be exposed to the parent module (the configuration that calls the module), making it possible to use the results of the module's actions elsewhere in the Terraform deployment.
 
     Output Variable|Description
     -|-
-    `active_rsa_public_key`|Specifies the current active RSA public key.
     `active_rsa_public_key_number`|Specifies current active RSA public key number.
 
 ## Resources
