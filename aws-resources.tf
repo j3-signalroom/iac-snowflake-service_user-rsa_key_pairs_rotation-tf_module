@@ -4,10 +4,10 @@ resource "aws_secretsmanager_secret" "public_keys" {
 
 resource "aws_secretsmanager_secret_version" "public_keys" {
     secret_id     = aws_secretsmanager_secret.public_keys.id
-    secret_string = jsonencode({"account": "",
-                                "user": "",
-                                "rsa_public_key_1": "",
-                                "rsa_public_key_2": ""})
+    secret_string = jsonencode({"account": "<ACCOUNT>",
+                                "user": "<USER>",
+                                "rsa_public_key_1": "<RSA_PUBLIC_KEY_1>",
+                                "rsa_public_key_2": "<RSA_PUBLIC_KEY_2>"})
 }
 
 resource "aws_secretsmanager_secret" "private_key_1" {
@@ -16,7 +16,7 @@ resource "aws_secretsmanager_secret" "private_key_1" {
 
 resource "aws_secretsmanager_secret_version" "private_key_1" {
     secret_id     = aws_secretsmanager_secret.private_key_1.id
-    secret_string = ""
+    secret_string = "<RSA_PRIVATE_KEY_1>"
 }
 
 resource "aws_secretsmanager_secret" "private_key_2" {
@@ -25,7 +25,7 @@ resource "aws_secretsmanager_secret" "private_key_2" {
 
 resource "aws_secretsmanager_secret_version" "private_key_2" {
     secret_id     = aws_secretsmanager_secret.private_key_2.id
-    secret_string = ""
+    secret_string = "<RSA_PRIVATE_KEY_2>"
 }
 
 resource "aws_iam_role" "generator_lambda" {
