@@ -1,5 +1,5 @@
-resource "aws_iam_role" "lambda_exec" {
-  name = "lambda_exec_role"
+resource "aws_iam_role" "generator_lambda" {
+  name = "snowflake_rsa_key_pairs_generator_role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -15,9 +15,9 @@ resource "aws_iam_role" "lambda_exec" {
   })
 }
 
-resource "aws_iam_policy" "lambda_exec_policy" {
-  name        = "lambda_exec_policy"
-  description = "IAM policy for Lambda execution role"
+resource "aws_iam_policy" "generator_lambda_policy" {
+  name        = "snowflake_rsa_key_pairs_generator_policy"
+  description = "IAM policy for the Snowflake RSA key pairs Generator Lambda execution role."
   
   policy = jsonencode({
     Version = "2012-10-17",
@@ -54,15 +54,15 @@ resource "aws_iam_policy" "lambda_exec_policy" {
   })
 }
 
-resource "aws_iam_role_policy_attachment" "lambda_exec_policy_attachment" {
-  role       = aws_iam_role.lambda_exec.name
-  policy_arn = aws_iam_policy.lambda_exec_policy.arn
+resource "aws_iam_role_policy_attachment" "generator_lambda_policy_attachment" {
+  role       = aws_iam_role.generator_lambda.name
+  policy_arn = aws_iam_policy.generator_lambda_policy.arn
 }
 
 # Lambda function
-resource "aws_lambda_function" "lambda_function" {
-  function_name = "rsa_key_pairs-generator"
-  role          = aws_iam_role.lambda_exec.arn
+resource "aws_lambda_function" "generator_lambda_function" {
+  function_name = "snowflake_rsa_key_pairs_generator"
+  role          = aws_iam_role.generator_lambda.arn
   package_type  = "Image"
   image_uri     = local.repo_uri
   memory_size   = var.aws_lambda_memory_size
@@ -70,14 +70,14 @@ resource "aws_lambda_function" "lambda_function" {
 }
 
 # Create a CloudWatch log group for the Lambda function
-resource "aws_cloudwatch_log_group" "lambda_log_group" {
-  name              = "/aws/lambda/${aws_lambda_function.lambda_function.function_name}"
+resource "aws_cloudwatch_log_group" "generator_lambda_function_log_group" {
+  name              = "/aws/lambda/${aws_lambda_function.generator_lambda_function.function_name}"
   retention_in_days = var.aws_log_retention_in_days
 }
 
 # Lambda function invocation
-resource "aws_lambda_invocation" "lambda_function" {
-  function_name = aws_lambda_function.lambda_function.function_name
+resource "aws_lambda_invocation" "generator_lambda_function" {
+  function_name = aws_lambda_function.generator_lambda_function.function_name
 
   input = jsonencode({
     user    = var.service_account_user
