@@ -1,3 +1,34 @@
+resource "aws_secretsmanager_secret" "public_keys" {
+    name = "${local.root_secret_name}"
+}
+
+resource "aws_secretsmanager_secret_version" "public_keys" {
+    secret_id     = aws_secretsmanager_secret.public_keys.id
+    secret_string = jsonencode({"${root_secret_account_key}": "",
+                                "${root_secret_user_key}": "",
+                                "${root_secret_rsa_public_key_1}": "",
+                                "${root_secret_rsa_public_key_2}": ""})
+}
+
+resource "aws_secretsmanager_secret" "private_key_1" {
+    name = "${local.rsa_private_key_pem_1_branch_secret_name}"
+}
+
+resource "aws_secretsmanager_secret_version" "private_key_1" {
+    secret_id     = aws_secretsmanager_secret.private_key_1.id
+    secret_string = ""
+}
+
+resource "aws_secretsmanager_secret" "private_key_2" {
+    name = "${local.rsa_private_key_pem_2_branch_secret_name}"
+    description = "Kafka Cluster secrets"
+}
+
+resource "aws_secretsmanager_secret_version" "private_key_2" {
+    secret_id     = aws_secretsmanager_secret.private_key_2.id
+    secret_string = ""
+}
+
 resource "aws_iam_role" "generator_lambda" {
   name = "snowflake_rsa_key_pairs_generator_role"
 
@@ -83,6 +114,15 @@ resource "aws_lambda_invocation" "generator_lambda_function" {
     user    = var.service_account_user
     account = var.snowflake_account
   })
+
+  depends_on = [
+    aws_secretsmanager_secret.public_keys,
+    aws_secretsmanager_secret_version.public_keys,
+    aws_secretsmanager_secret.private_key_1,
+    aws_secretsmanager_secret_version.private_key_1,
+    aws_secretsmanager_secret.private_key_2,
+    aws_secretsmanager_secret_version.private_key_2    
+  ]
 
   lifecycle {
     replace_triggered_by = [time_static.rsa_key_pair_rotations]
