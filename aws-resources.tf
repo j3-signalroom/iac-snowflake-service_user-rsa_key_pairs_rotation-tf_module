@@ -1,5 +1,5 @@
 resource "aws_secretsmanager_secret" "public_keys" {
-    name = "${local.root_secret_name}"
+    name = "/snowflake_resource"
 }
 
 resource "aws_secretsmanager_secret_version" "public_keys" {
@@ -11,7 +11,7 @@ resource "aws_secretsmanager_secret_version" "public_keys" {
 }
 
 resource "aws_secretsmanager_secret" "private_key_1" {
-    name = "${local.rsa_private_key_pem_1_branch_secret_name}"
+    name = "/snowflake_resource/rsa_private_key_pem_1"
 }
 
 resource "aws_secretsmanager_secret_version" "private_key_1" {
@@ -20,8 +20,7 @@ resource "aws_secretsmanager_secret_version" "private_key_1" {
 }
 
 resource "aws_secretsmanager_secret" "private_key_2" {
-    name = "${local.rsa_private_key_pem_2_branch_secret_name}"
-    description = "Kafka Cluster secrets"
+    name = "/snowflake_resource/rsa_private_key_pem_2"
 }
 
 resource "aws_secretsmanager_secret_version" "private_key_2" {
@@ -104,6 +103,15 @@ resource "aws_lambda_function" "generator_lambda_function" {
 resource "aws_cloudwatch_log_group" "generator_lambda_function_log_group" {
   name              = "/aws/lambda/${aws_lambda_function.generator_lambda_function.function_name}"
   retention_in_days = var.aws_log_retention_in_days
+
+  depends_on = [
+    aws_secretsmanager_secret.public_keys,
+    aws_secretsmanager_secret_version.public_keys,
+    aws_secretsmanager_secret.private_key_1,
+    aws_secretsmanager_secret_version.private_key_1,
+    aws_secretsmanager_secret.private_key_2,
+    aws_secretsmanager_secret_version.private_key_2    
+  ]
 }
 
 # Lambda function invocation
@@ -114,15 +122,6 @@ resource "aws_lambda_invocation" "generator_lambda_function" {
     user    = var.service_account_user
     account = var.snowflake_account
   })
-
-  depends_on = [
-    aws_secretsmanager_secret.public_keys,
-    aws_secretsmanager_secret_version.public_keys,
-    aws_secretsmanager_secret.private_key_1,
-    aws_secretsmanager_secret_version.private_key_1,
-    aws_secretsmanager_secret.private_key_2,
-    aws_secretsmanager_secret_version.private_key_2    
-  ]
 
   lifecycle {
     replace_triggered_by = [time_static.rsa_key_pair_rotations]
