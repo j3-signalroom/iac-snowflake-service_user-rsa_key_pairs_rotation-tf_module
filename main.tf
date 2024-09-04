@@ -21,14 +21,6 @@ locals {
     repo_uri     = "${var.aws_account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/${local.repo_name}:latest"
     ecr_repo_uri = "arn:aws:ecr:${var.aws_region}:${var.aws_account_id}:repository/${local.repo_name}"
 
-    root_secret_name                        = "/snowflake_resource"
-    root_secret_account_key                 = "account"
-    root_secret_user_key                    = "user"
-    root_secret_rsa_public_key_1            = "rsa_public_key_1"
-    root_secret_rsa_public_key_2            = "rsa_public_key_2"
-    rsa_private_key_pem_1_branch_secret_name = "/snowflake_resource/rsa_private_key_pem_1"
-    rsa_private_key_pem_2_branch_secret_name = "/snowflake_resource/rsa_private_key_pem_2"
-
     now        = timestamp()
     hour_count = var.day_count*24
 
