@@ -7,6 +7,10 @@ terraform {
         }
   }
 
+  # Using the "pessimistic constraint operator(s)" for all the Provider(s) to ensure
+  # that the provider version is compatible with the configuration.  Meaning
+  # only patch-level updates are allowed but minor-level and major-level 
+  # updates of the Providers are not allowed
   required_providers {
         aws = {
             source  = "hashicorp/aws"
