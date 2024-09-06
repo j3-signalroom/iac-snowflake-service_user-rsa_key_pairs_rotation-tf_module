@@ -18,6 +18,12 @@ variable "service_account_user" {
     type        = string
 }
 
+variable "secret_insert" {
+    description = "The insert string to be inserted into the AWS Secrets Manager secrets paths."
+    type        = string
+    default     = ""
+}
+
 variable "day_count" {
     description = "How many day(s) should the RSA key pair be rotated for."
     type = number

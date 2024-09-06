@@ -128,8 +128,9 @@ resource "aws_lambda_invocation" "generator_lambda_function" {
   function_name = aws_lambda_function.generator_lambda_function.function_name
 
   input = jsonencode({
-    user    = var.service_account_user
-    account = var.snowflake_account
+    user          = var.service_account_user
+    account       = var.snowflake_account
+    secret_insert = var.secret_insert
   })
 
   lifecycle {
