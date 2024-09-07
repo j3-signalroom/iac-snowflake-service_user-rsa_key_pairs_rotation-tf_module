@@ -2,7 +2,7 @@
 # And, initially store placeholder values in the secrets, which will later be filled in by the
 # Lambda function
 resource "aws_secretsmanager_secret" "public_keys" {
-    name = "/snowflake_resource"
+    name = var.secret_insert == "" ? "/snowflake_resource" : "/snowflake_resource/${var.secret_insert}"
 }
 
 resource "aws_secretsmanager_secret_version" "public_keys" {
@@ -16,7 +16,7 @@ resource "aws_secretsmanager_secret_version" "public_keys" {
 # Create the Private RSA key pair 1 secret in AWS Secrets Manager.  And, initially store a placeholder
 # value in the secret, which will later be filled in by the Lambda function
 resource "aws_secretsmanager_secret" "private_key_1" {
-    name = "/snowflake_resource/rsa_private_key_pem_1"
+    name = var.secret_insert == "" ? "/snowflake_resource/rsa_private_key_pem_1" : "/snowflake_resource/${var.secret_insert}/rsa_private_key_pem_1"
 }
 
 resource "aws_secretsmanager_secret_version" "private_key_1" {
@@ -27,7 +27,7 @@ resource "aws_secretsmanager_secret_version" "private_key_1" {
 # Create the Private RSA key pair 2 secret in AWS Secrets Manager.  And, initially store a placeholder
 # value in the secret, which will later be filled in by the Lambda function
 resource "aws_secretsmanager_secret" "private_key_2" {
-    name = "/snowflake_resource/rsa_private_key_pem_2"
+    name = var.secret_insert == "" ? "/snowflake_resource/rsa_private_key_pem_2" : "/snowflake_resource/${var.secret_insert}/rsa_private_key_pem_2"
 }
 
 resource "aws_secretsmanager_secret_version" "private_key_2" {
@@ -37,7 +37,7 @@ resource "aws_secretsmanager_secret_version" "private_key_2" {
 
 # Create the Lambda execution role and policy
 resource "aws_iam_role" "generator_lambda" {
-  name = "snowflake_rsa_key_pairs_generator_role"
+  name = "snowflake_${var.secret_insert}_rsa_key_pairs_generator_role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -54,7 +54,7 @@ resource "aws_iam_role" "generator_lambda" {
 }
 
 resource "aws_iam_policy" "generator_lambda_policy" {
-  name        = "snowflake_rsa_key_pairs_generator_policy"
+  name        = "snowflake_${var.secret_insert}_rsa_key_pairs_generator_policy"
   description = "IAM policy for the Snowflake RSA key pairs Generator Lambda execution role."
   
   policy = jsonencode({
@@ -100,7 +100,7 @@ resource "aws_iam_role_policy_attachment" "generator_lambda_policy_attachment" {
 
 # Lambda function
 resource "aws_lambda_function" "generator_lambda_function" {
-  function_name = "snowflake_rsa_key_pairs_generator"
+  function_name = "snowflake_${var.secret_insert}_rsa_key_pairs_generator"
   role          = aws_iam_role.generator_lambda.arn
   package_type  = "Image"
   image_uri     = local.repo_uri
