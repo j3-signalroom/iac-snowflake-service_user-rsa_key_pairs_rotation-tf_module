@@ -37,7 +37,7 @@ resource "aws_secretsmanager_secret_version" "private_key_2" {
 
 # Create the Lambda execution role and policy
 resource "aws_iam_role" "generator_lambda" {
-  name = "snowflake_${var.secret_insert}_rsa_key_pairs_generator_role"
+  name = "${var.secret_insert}_role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -54,7 +54,7 @@ resource "aws_iam_role" "generator_lambda" {
 }
 
 resource "aws_iam_policy" "generator_lambda_policy" {
-  name        = "snowflake_${var.secret_insert}_rsa_key_pairs_generator_policy"
+  name        = "${var.secret_insert}_policy"
   description = "IAM policy for the Snowflake RSA key pairs Generator Lambda execution role."
   
   policy = jsonencode({
@@ -100,7 +100,7 @@ resource "aws_iam_role_policy_attachment" "generator_lambda_policy_attachment" {
 
 # Lambda function
 resource "aws_lambda_function" "generator_lambda_function" {
-  function_name = "snowflake_${var.secret_insert}_rsa_key_pairs_generator"
+  function_name = "${var.secret_insert}_function"
   role          = aws_iam_role.generator_lambda.arn
   package_type  = "Image"
   image_uri     = local.repo_uri
