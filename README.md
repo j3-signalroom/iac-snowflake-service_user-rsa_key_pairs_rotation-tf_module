@@ -17,11 +17,11 @@ This flexibility makes the module highly reusable and easier to integrate into v
 **Table of Contents**
 
 <!-- toc -->
-+ [Let's get started!](#lets-get-started)
-+ [Resources](#resources)
++ [1.0 Let's get started!](#10-lets-get-started)
++ [2.0 Resources](#20-resources)
 <!-- tocstop -->
 
-## Let's get started!
+## 1.0 Let's get started!
 
 > **Important Notice**
 >
@@ -76,9 +76,9 @@ This flexibility makes the module highly reusable and easier to integrate into v
     -|-
     `active_rsa_public_key_number`|Specifies current active RSA public key number.
 
-## Resources
+## 2.0 Resources
 [Snowflake key pair authentication and key pair rotation](https://docs.snowflake.com/en/user-guide/key-pair-auth)
 
-[Terraform Resource time_rotating](https://registry.terraform.io/providers/hashicorp/time/latest/docs/resources/rotating.html)
+[Terraform Resource `time_rotating`](https://registry.terraform.io/providers/hashicorp/time/latest/docs/resources/rotating.html)
 
 [Terraform Hidden Gems! Secret Rotation with time_rotating](https://medium.com/cloud-native-daily/terraform-hidden-gems-secret-rotation-with-time-rotating-72ae8683ef7f)
