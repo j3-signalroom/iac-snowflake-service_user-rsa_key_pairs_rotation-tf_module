@@ -84,9 +84,14 @@ resource "aws_iam_policy" "generator_lambda_policy" {
         Resource = "*"
       },
       {
-        Action = "secretsmanager:*",
+        Action = [
+          "secretsmanager:GetSecretValue",
+          "secretsmanager:PutSecretValue",
+          "secretsmanager:CreateSecret",
+          "secretsmanager:UpdateSecret"
+        ],
         Effect = "Allow",
-        Resource = "*"
+        Resource = "arn:aws:secretsmanager:${var.aws_region}:${var.aws_account_id}:secret:/snowflake_resource/*"
       }
     ]
   })
