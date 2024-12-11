@@ -92,19 +92,30 @@ resource "aws_iam_policy" "generator_lambda_policy" {
         ],
         Effect = "Allow",
         Resource = [
-          "arn:aws:secretsmanager:${var.aws_region}:${var.aws_account_id}:secret:/snowflake_resource/${var.secret_insert}-*",
-          "arn:aws:secretsmanager:${var.aws_region}:${var.aws_account_id}:secret:/snowflake_resource/${var.secret_insert}/rsa_private_key_pem_1-*",
-          "arn:aws:secretsmanager:${var.aws_region}:${var.aws_account_id}:secret:/snowflake_resource/${var.secret_insert}/rsa_private_key_pem_2-*"
+          aws_secretsmanager_secret.public_keys.arn,
+          aws_secretsmanager_secret.private_key_1.arn,
+          aws_secretsmanager_secret.private_key_2.arn
         ]
       }
     ]
   })
+
+  depends_on = [ 
+    aws_secretsmanager_secret.public_keys,
+    aws_secretsmanager_secret.private_key_1,
+    aws_secretsmanager_secret.private_key_2
+  ]
 }
 
 # Attach the policy to the role
 resource "aws_iam_role_policy_attachment" "generator_lambda_policy_attachment" {
   role       = aws_iam_role.generator_lambda.name
   policy_arn = aws_iam_policy.generator_lambda_policy.arn
+
+  depends_on = [ 
+    aws_iam_role.generator_lambda,
+    aws_iam_policy.generator_lambda_policy 
+  ]
 }
 
 # Lambda function
@@ -115,6 +126,8 @@ resource "aws_lambda_function" "generator_lambda_function" {
   image_uri     = local.repo_uri
   memory_size   = var.aws_lambda_memory_size
   timeout       = var.aws_lambda_timeout
+
+  depends_on = [ aws_iam_role.generator_lambda ]
 }
 
 # Create a CloudWatch log group for the Lambda function
@@ -145,4 +158,6 @@ resource "aws_lambda_invocation" "generator_lambda_function" {
   lifecycle {
     replace_triggered_by = [time_static.rsa_key_pair_rotations]
   }
+
+  depends_on = [ aws_lambda_function.generator_lambda_function ]
 }
