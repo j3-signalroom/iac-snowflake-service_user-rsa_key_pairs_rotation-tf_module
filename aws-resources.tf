@@ -91,7 +91,11 @@ resource "aws_iam_policy" "generator_lambda_policy" {
           "secretsmanager:UpdateSecret"
         ],
         Effect = "Allow",
-        Resource = "arn:aws:secretsmanager:${var.aws_region}:${var.aws_account_id}:secret:/snowflake_resource/*"
+        Resource = [
+          "arn:aws:secretsmanager:${var.aws_region}:${var.aws_account_id}:secret:/snowflake_resource/${var.secret_insert}",
+          "arn:aws:secretsmanager:${var.aws_region}:${var.aws_account_id}:secret:/snowflake_resource/${var.secret_insert}/rsa_private_key_pem_1",
+          "arn:aws:secretsmanager:${var.aws_region}:${var.aws_account_id}:secret:/snowflake_resource/${var.secret_insert}/rsa_private_key_pem_2"
+        ]
       }
     ]
   })
