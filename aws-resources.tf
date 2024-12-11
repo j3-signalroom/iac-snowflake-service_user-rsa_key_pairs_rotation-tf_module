@@ -35,22 +35,24 @@ resource "aws_secretsmanager_secret_version" "private_key_2" {
     secret_string = "<RSA_PRIVATE_KEY_2>"
 }
 
+data "aws_iam_policy_document" "assume_role" {
+  statement {
+    effect = "Allow"
+
+    principals {
+      type        = "Service"
+      identifiers = ["lambda.amazonaws.com"]
+    }
+
+    actions = ["sts:AssumeRole"]
+  }
+}
+
 # Create the Lambda execution role and policy
 resource "aws_iam_role" "generator_lambda" {
   name = "${var.secret_insert}_role"
 
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17",
-    Statement = [
-      {
-        Action = "sts:AssumeRole",
-        Effect = "Allow",
-        Principal = {
-          Service = "lambda.amazonaws.com"
-        }
-      }
-    ]
-  })
+  assume_role_policy = data.aws_iam_policy_document.assume_role.json
 }
 
 resource "aws_iam_policy" "generator_lambda_policy" {
