@@ -44,7 +44,7 @@ This flexibility makes the module highly reusable and easier to integrate into v
 
     a. Locate the `terraform.cloud` block and replace **`signalroom`** with your [Terraform Cloud Organization Name](https://developer.hashicorp.com/terraform/cloud-docs/users-teams-organizations/organizations).
 
-    b. In the `terraform.cloud.workspaces` block, replace **`snowflake-user-rsa-key-generator-workspace`** with your [Terraform Cloud Organization's Workspaces Name](https://developer.hashicorp.com/terraform/cloud-docs/workspaces).
+    b. In the `terraform.cloud.workspaces` block, replace **`snowflake-resources-workspace`** with your [Terraform Cloud Organization's Workspaces Name](https://developer.hashicorp.com/terraform/cloud-docs/workspaces).
 
 4.  Deploy your Terraform module to GitHub by following these steps:
 
