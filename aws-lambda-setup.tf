@@ -108,6 +108,10 @@ resource "aws_cloudwatch_log_group" "generator_lambda_function_log_group" {
     aws_secretsmanager_secret.private_key_2,
     aws_secretsmanager_secret_version.private_key_2    
   ]
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 # Lambda function invocation
