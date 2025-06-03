@@ -3,11 +3,6 @@ variable "aws_region" {
     type        = string
 }
 
-variable "aws_account_id" {
-    description = "The AWS Account ID."
-    type        = string
-}
-
 variable "snowflake_account" {
     description = "The Snowflake Account identifer issued to your organization."
     type        = string
