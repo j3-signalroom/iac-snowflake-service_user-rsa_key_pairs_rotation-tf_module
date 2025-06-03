@@ -18,6 +18,7 @@ This flexibility makes the module highly reusable and easier to integrate into v
 
 <!-- toc -->
 + [1.0 Let's get started!](#10-lets-get-started)
+    - [1.1 Visualizing the Terraform Configuration](#11-visualizing-the-terraform-configuration)
 + [2.0 Resources](#20-resources)
 <!-- tocstop -->
 
@@ -62,7 +63,6 @@ This flexibility makes the module highly reusable and easier to integrate into v
     Input Variable|Description
     -|-
     `aws_region`|The AWS Region the Terraform configuration uses.
-    `aws_account_id`|The AWS Account ID the Terraform configuration uses.
     `snowflake_account`|The Snowflake Account identifer issued to your organization.
     `service_account_user`|The Snowflake service account user who is to be assigned the RSA key pairs for its authentication.
     `day_count`|_**(Optional and defaults to 30 days)**_  How many day(s) should the RSA key pairs be rotated for.
@@ -75,6 +75,19 @@ This flexibility makes the module highly reusable and easier to integrate into v
     Output Variable|Description
     -|-
     `active_rsa_public_key_number`|Specifies current active RSA public key number.
+
+### 1.1 Visualizing the Terraform Configuration
+Below is the Terraform visualization of the Terraform configuration. It shows the resources and their dependencies, making the infrastructure setup easier to understand.
+
+![Terraform Visulization](.blog/images/terraform-visualization.png)
+
+> **To fully view the image, open it in another tab on your browser to zoom in.**
+
+When you update the Terraform Configuration, to update the Terraform visualization, use the [`terraform graph`](https://developer.hashicorp.com/terraform/cli/commands/graph) command with [Graphviz](https://graphviz.org/) to generate a visual representation of the resources and their dependencies.  To do this, run the following command:
+
+```bash
+terraform graph | dot -Tpng > .blog/images/terraform-visualization.png
+```
 
 ## 2.0 Resources
 [Snowflake key pair authentication and key pair rotation](https://docs.snowflake.com/en/user-guide/key-pair-auth)
