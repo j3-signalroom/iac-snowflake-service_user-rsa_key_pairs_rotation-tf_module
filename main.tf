@@ -3,7 +3,7 @@ terraform {
         organization ="signalroom"
 
         workspaces {
-            name = "snowflake-resources-workspace"
+            name = "iac-snowflake-user-rsa-key-pairs-rotation-tf-module-workspace"
         }
   }
 
