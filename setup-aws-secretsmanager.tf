@@ -10,7 +10,9 @@ resource "aws_secretsmanager_secret_version" "public_keys" {
     secret_string = jsonencode({"account": "<ACCOUNT>",
                                 "user": "<USER>",
                                 "rsa_public_key_1": "<RSA_PUBLIC_KEY_1>",
-                                "rsa_public_key_2": "<RSA_PUBLIC_KEY_2>"})
+                                "public_key_1_jwt": "<PUBLIC_KEY_1_JWT>",
+                                "rsa_public_key_2": "<RSA_PUBLIC_KEY_2>",
+                                "public_key_2_jwt": "<PUBLIC_KEY_2_JWT>"})
 }
 
 # Create the Private RSA key pair 1 secret in AWS Secrets Manager.  And, initially store a placeholder
