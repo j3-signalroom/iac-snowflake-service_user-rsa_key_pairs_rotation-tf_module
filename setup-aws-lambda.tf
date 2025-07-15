@@ -95,25 +95,6 @@ resource "aws_lambda_function" "generator_lambda_function" {
   depends_on = [ aws_iam_role.generator_lambda ]
 }
 
-# Create a CloudWatch log group for the Lambda function
-resource "aws_cloudwatch_log_group" "generator_lambda_function_log_group" {
-  name              = "/aws/lambda/${aws_lambda_function.generator_lambda_function.function_name}"
-  retention_in_days = var.aws_log_retention_in_days
-
-  depends_on = [
-    aws_secretsmanager_secret.public_keys,
-    aws_secretsmanager_secret_version.public_keys,
-    aws_secretsmanager_secret.private_key_1,
-    aws_secretsmanager_secret_version.private_key_1,
-    aws_secretsmanager_secret.private_key_2,
-    aws_secretsmanager_secret_version.private_key_2    
-  ]
-
-  lifecycle {
-    create_before_destroy = true
-  }
-}
-
 # Lambda function invocation
 resource "aws_lambda_invocation" "generator_lambda_function" {
   function_name = aws_lambda_function.generator_lambda_function.function_name
