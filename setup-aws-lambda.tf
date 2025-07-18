@@ -101,7 +101,7 @@ resource "aws_lambda_invocation" "generator_lambda_function" {
 
   input = jsonencode({
     user                              = var.service_account_user
-    account_identifier                = var.snowflake_account
+    account_identifier                = var.account_identifier
     get_private_keys_from_aws_secrets = True,
     secret_insert                     = var.secret_insert
   })
@@ -111,4 +111,10 @@ resource "aws_lambda_invocation" "generator_lambda_function" {
   }
 
   depends_on = [ aws_lambda_function.generator_lambda_function ]
+}
+
+# Parse the returned JSON.
+locals {
+  key_generation_result = jsondecode(data.aws_lambda_invocation.generator_lambda_functions.result)
+  response_body = jsondecode(local.key_generation_result.body)
 }
