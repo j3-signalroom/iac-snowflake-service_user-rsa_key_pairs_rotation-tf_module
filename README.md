@@ -63,7 +63,7 @@ This flexibility makes the module highly reusable and easier to integrate into v
     Input Variable|Description
     -|-
     `aws_region`|The AWS Region the Terraform configuration uses.
-    `snowflake_account`|The Snowflake Account identifer issued to your organization.
+    `account_identifier`|The Snowflake Account identifer issued to your organization.
     `service_account_user`|The Snowflake service account user who is to be assigned the RSA key pairs for its authentication.
     `day_count`|_**(Optional and defaults to 30 days)**_  How many day(s) should the RSA key pairs be rotated for.
     `aws_lambda_memory_size`|_**(Optional and defaults to 128 MB)**_  Lambda allocates CPU power in proportion to the amount of memory configured. Memory is the amount of memory available to your Lambda function at runtime. You can increase or decrease the memory and CPU power allocated to your function using the Memory setting. You can configure memory between 128 MB and 10,240 MB in 1-MB increments. At 1,769 MB, a function has the equivalent of one vCPU (one vCPU-second of credits per second).
