@@ -7,7 +7,7 @@ resource "aws_secretsmanager_secret" "public_keys" {
 
 resource "aws_secretsmanager_secret_version" "public_keys" {
     secret_id     = aws_secretsmanager_secret.public_keys.id
-    secret_string = jsonencode({"account": "<ACCOUNT>",
+    secret_string = jsonencode({"account_identifier": "<ACCOUNT_IDENTIFIER>",
                                 "user": "<USER>",
                                 "rsa_public_key_1": "<RSA_PUBLIC_KEY_1>",
                                 "rsa_public_key_2": "<RSA_PUBLIC_KEY_2>"})
