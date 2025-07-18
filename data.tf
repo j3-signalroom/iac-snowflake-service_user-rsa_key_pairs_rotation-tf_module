@@ -9,7 +9,7 @@ locals {
     now        = timestamp()
     hour_count = var.day_count*24
 
-    # As of 2025-06-03, Snowflake only allows a max of two RSA key pairs that can be rotated for a given user
+    # As of 2025-07-18, Snowflake only allows a max of two RSA key pairs that can be rotated for a given user
     number_of_rsa_key_pairs_to_retain = 2
 
     sorted_dates                      = sort(time_rotating.rsa_key_pair_rotations.*.rfc3339)
