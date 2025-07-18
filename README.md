@@ -1,4 +1,6 @@
 # IaC Snowflake User RSA key pairs Rotation Terraform module
+Last updated: 2025-07-18
+
 This Terraform [module](https://developer.hashicorp.com/terraform/language/modules) offers a robust and automated solution for managing the entire lifecycle of [RSA key pairs](https://github.com/j3-signalroom/j3-techstack-lexicon/blob/main/cryptographic-glossary.md#rsa-key-pair) used to authenticate a Snowflake service account. It leverages the Infrastructure-as-Code (IaC) approach with a specialized AWS Lambda function, known as the [IaC Snowflake User RSA key pairs and JWT Generator](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_and_jwt_generator-lambda), to automate the generation and rotation of RSA key pairs. The module allows users to define rotation intervals (e.g., every 30 days since the last key generation) to enhance security by regularly renewing cryptographic credentials. Additionally, it integrates seamlessly with AWS Secrets Manager to securely store and manage the generated key pairs, ensuring that the keys remain protected and easily accessible for Snowflake authentication without manual intervention.
 
 Overall, this module is a vital tool for maintaining a secure, efficient, and automated RSA key management process in cloud environments that utilize Snowflake.
@@ -26,7 +28,7 @@ This flexibility makes the module highly reusable and easier to integrate into v
 
 > **Important Notice**
 >
-> To ensure seamless operation and avoid potential disruptions when using Terraform with time-based rotation, it’s crucial to regularly execute the module within the specified rotation period. Specifically, the execution frequency should match or exceed the configured rotation interval for RSA key pairs. Failing to adhere to this schedule risks the deletion of multiple key pairs in a single execution cycle. Such an occurrence could potentially remove all active RSA keys, thereby disrupting any processes that rely on older keys for accessing Snowflake resources. To maintain uninterrupted access and functionality, it is imperative to keep the module execution timely and consistent with the rotation settings.
+> _To ensure smooth operation and prevent potential disruptions when using Terraform with time-based rotation, it’s essential to run the module regularly within the specified rotation period. Specifically, the execution frequency should match or surpass the configured rotation interval for RSA key pairs. Missing this schedule risks deleting multiple key pairs in one cycle. This could potentially remove all active RSA keys, disrupting any processes that depend on older keys to access Snowflake resources. To maintain continuous access and functionality, it is crucial to keep the module execution timely and aligned with the rotation settings._
 
 **These are the steps**
 
@@ -45,7 +47,7 @@ This flexibility makes the module highly reusable and easier to integrate into v
 
     a. Locate the `terraform.cloud` block and replace **`signalroom`** with your [Terraform Cloud Organization Name](https://developer.hashicorp.com/terraform/cloud-docs/users-teams-organizations/organizations).
 
-    b. In the `terraform.cloud.workspaces` block, replace **`snowflake-resources-workspace`** with your [Terraform Cloud Organization's Workspaces Name](https://developer.hashicorp.com/terraform/cloud-docs/workspaces).
+    b. In the `terraform.cloud.workspaces` block, replace **`iac-snowflake-user-rsa-key-pairs-rotation-tf-module-workspace`** with your [Terraform Cloud Organization's Workspaces Name](https://developer.hashicorp.com/terraform/cloud-docs/workspaces).
 
 4.  Deploy your Terraform module to GitHub by following these steps:
 
