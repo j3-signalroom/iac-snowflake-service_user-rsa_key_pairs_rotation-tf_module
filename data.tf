@@ -2,7 +2,7 @@ data "aws_caller_identity" "current" {}
 
 locals {
     # Repo name and URIs
-    repo_name    = "iac-snowflake-user-rsa_key_pairs_generator"
+    repo_name    = "iac-snowflake-user-rsa_key_pairs_and_jwt_generator"
     repo_uri     = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/${local.repo_name}:latest"
     ecr_repo_uri = "arn:aws:ecr:${var.aws_region}:${data.aws_caller_identity.current.account_id}:repository/${local.repo_name}"
 
