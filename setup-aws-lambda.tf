@@ -115,6 +115,6 @@ resource "aws_lambda_invocation" "generator_lambda_function" {
 
 # Parse the returned JSON.
 locals {
-  key_generation_result = jsondecode(data.aws_lambda_invocation.generator_lambda_functions.result)
+  key_generation_result = jsondecode(data.aws_lambda_invocation.generator_lambda_function.result)
   response_body = jsondecode(local.key_generation_result.body)
 }
