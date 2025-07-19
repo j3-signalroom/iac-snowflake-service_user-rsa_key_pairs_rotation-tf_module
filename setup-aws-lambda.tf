@@ -102,7 +102,7 @@ resource "aws_lambda_invocation" "generator_lambda_function" {
   input = jsonencode({
     user                              = var.service_account_user
     account_identifier                = var.account_identifier
-    get_private_keys_from_aws_secrets = True,
+    get_private_keys_from_aws_secrets = true,
     secret_insert                     = var.secret_insert
   })
 
