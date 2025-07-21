@@ -9,10 +9,12 @@ locals {
     now        = timestamp()
     hour_count = var.day_count*24
 
-    # As of 2025-07-18, Snowflake only allows a max of two RSA key pairs that can be rotated for a given user
+    # As of 2025-07-21, Snowflake only allows a max of two RSA key pairs that can be rotated for a given user
     number_of_rsa_key_pairs_to_retain = 2
 
     sorted_dates                      = sort(time_rotating.rsa_key_pair_rotations.*.rfc3339)
     dates_and_count                   = zipmap(time_rotating.rsa_key_pair_rotations.*.rfc3339, range(local.number_of_rsa_key_pairs_to_retain))
     latest_rsa_public_key_number      = lookup(local.dates_and_count, local.sorted_dates[0])
+    key_generation_result             = jsondecode(aws_lambda_invocation.generator_lambda_function.result)
+    response_body                     = jsondecode(local.key_generation_result.body)
 }
