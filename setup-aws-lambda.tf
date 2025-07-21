@@ -57,7 +57,7 @@ resource "aws_iam_policy" "generator_lambda_policy" {
         ],
         Effect = "Allow",
         Resource = [
-          "arn:aws:secretsmanager:*:*:secret:/snowflake_resource/${var.secret_insert}/*"
+          "arn:aws:secretsmanager:*:*:secret:/snowflake_resource/${var.secret_insert}-*"
         ]
       }
     ]
