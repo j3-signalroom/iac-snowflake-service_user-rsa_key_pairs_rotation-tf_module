@@ -92,7 +92,7 @@ resource "aws_lambda_function" "generator_lambda_function" {
   memory_size   = var.aws_lambda_memory_size
   timeout       = var.aws_lambda_timeout
 
-  depends_on = [ aws_iam_role.generator_lambda ]
+  depends_on = [ aws_iam_role_policy_attachment.generator_lambda_policy_attachment ]
 }
 
 # Lambda function invocation
