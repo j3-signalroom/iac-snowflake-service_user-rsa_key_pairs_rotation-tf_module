@@ -112,9 +112,3 @@ resource "aws_lambda_invocation" "generator_lambda_function" {
 
   depends_on = [ aws_lambda_function.generator_lambda_function ]
 }
-
-# Parse the returned JSON.
-locals {
-  key_generation_result = jsondecode(aws_lambda_invocation.generator_lambda_function.result)
-  response_body = jsondecode(local.key_generation_result.body)
-}
