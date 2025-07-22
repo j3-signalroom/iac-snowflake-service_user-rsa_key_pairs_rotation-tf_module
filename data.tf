@@ -16,5 +16,5 @@ locals {
     dates_and_count              = zipmap(time_rotating.rsa_key_pair_rotations.*.rfc3339, range(local.number_of_rsa_key_pairs_to_retain))
     latest_rsa_public_key_number = lookup(local.dates_and_count, local.sorted_dates[0])
     key_pairs                    = jsondecode(aws_lambda_invocation.generator_lambda_function.result)
-    base_secrets_path            = format("/snowflake_resource%s", var.secret_insert != "" ? "/${var.secret_insert}" : "")
+    base_secrets_path            = lower(format("/snowflake_resource%s", var.secret_insert != "" ? "/${var.secret_insert}" : ""))
 }
