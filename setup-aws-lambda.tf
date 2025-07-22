@@ -58,8 +58,9 @@ resource "aws_iam_policy" "lambda_policy" {
           aws_secretsmanager_secret.private_key_pem_1.arn,
           aws_secretsmanager_secret.private_key_pem_2.arn,
           aws_secretsmanager_secret.private_key_1.arn,
-          aws_secretsmanager_secret.private_key_2.arn
-        ] 
+          aws_secretsmanager_secret.private_key_2.arn,
+          "arn:aws:secretsmanager:*:*:secret:/snowflake_resource/iac_snowflake_example/*"
+        ]
       }
     ]
   })
