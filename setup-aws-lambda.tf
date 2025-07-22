@@ -1,5 +1,5 @@
 resource "aws_iam_role" "lambda_execution_role" {
-  name = "${var.secret_insert}_role"
+  name = lower("${var.secret_insert}_role")
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -16,7 +16,7 @@ resource "aws_iam_role" "lambda_execution_role" {
 }
 
 resource "aws_iam_policy" "lambda_policy" {
-  name        = "${var.secret_insert}_policy"
+  name        = lower("${var.secret_insert}_policy")
   description = "IAM policy for the Snowflake RSA key pairs Generator Lambda execution role."
   
   policy = jsonencode({
@@ -58,8 +58,7 @@ resource "aws_iam_policy" "lambda_policy" {
           aws_secretsmanager_secret.private_key_pem_1.arn,
           aws_secretsmanager_secret.private_key_pem_2.arn,
           aws_secretsmanager_secret.private_key_1.arn,
-          aws_secretsmanager_secret.private_key_2.arn,
-          "arn:aws:secretsmanager:*:*:secret:/snowflake_resource/iac_snowflake_example/*"
+          aws_secretsmanager_secret.private_key_2.arn
         ]
       }
     ]
@@ -87,7 +86,7 @@ resource "aws_iam_role_policy_attachment" "attach_lambda_policy" {
 
 # Lambda function
 resource "aws_lambda_function" "lambda_function" {
-  function_name = "${var.secret_insert}_function"
+  function_name = lower("${var.secret_insert}_function")
   role          = aws_iam_role.lambda_execution_role.arn
   package_type  = "Image"
   image_uri     = local.repo_uri
@@ -104,10 +103,10 @@ resource "aws_lambda_invocation" "lambda_function" {
   function_name = aws_lambda_function.lambda_function.function_name
 
   input = jsonencode({
-    user                              = var.service_account_user
     account_identifier                = var.account_identifier
+    snowflake_user                    = var.service_account_user
     get_private_keys_from_aws_secrets = true,
-    secret_insert                     = var.secret_insert
+    secret_insert                     = lower(var.secret_insert)
   })
 
   lifecycle {
