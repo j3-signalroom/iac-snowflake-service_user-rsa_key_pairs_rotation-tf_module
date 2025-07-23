@@ -3,14 +3,14 @@ output "key_number" {
     description = "The current active RSA public key number."
 }
 
-output "rsa_snowflake_public_key_pem_1" {
-    value       = local.key_pairs["snowflake_rsa_public_key_pem_1"]
-    description = "The generated Snowflake RSA public key PEM 1."
+output "snowflake_rsa_public_key_1_pem" {
+    value       = local.key_pairs["snowflake_rsa_public_key_1_pem"]
+    description = "The generated Snowflake RSA Public Key 1 PEM."
 }
 
-output "rsa_snowflake_public_key_pem_2" {
-    value       = local.key_pairs["snowflake_rsa_public_key_pem_2"]
-    description = "The generated Snowflake RSA public key PEM 2."
+output "snowflake_rsa_public_key_2_pem" {
+    value       = local.key_pairs["snowflake_rsa_public_key_2_pem"]
+    description = "The generated Snowflake RSA Public Key 2 PEM."
 }
 
 output "rsa_jwt_1" {
