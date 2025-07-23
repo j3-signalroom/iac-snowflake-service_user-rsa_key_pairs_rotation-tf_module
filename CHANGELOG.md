@@ -15,6 +15,7 @@ The format is base on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), 
 ### Changed 
 - Issue [#165](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/165)
 - Issue [#175](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/175)
+- Issue [#177](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/177)
 
 ### Fixed 
 - Issue [#158](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/158)

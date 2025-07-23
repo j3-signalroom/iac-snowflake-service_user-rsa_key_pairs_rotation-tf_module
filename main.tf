@@ -16,7 +16,7 @@ terraform {
 }
 
 resource "aws_iam_role" "lambda_execution_role" {
-  name = lower("${var.secret_insert}_role")
+  name = lower("${var.lambda_function_name}_role")
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -33,7 +33,7 @@ resource "aws_iam_role" "lambda_execution_role" {
 }
 
 resource "aws_iam_policy" "lambda_policy" {
-  name        = lower("${var.secret_insert}_policy")
+  name        = lower("${var.lambda_function_name}_policy")
   description = "IAM policy for the Snowflake RSA key pairs Generator Lambda execution role."
   
   policy = jsonencode({
@@ -71,18 +71,14 @@ resource "aws_iam_policy" "lambda_policy" {
         ],
         Effect = "Allow",
         Resource = [
-          aws_secretsmanager_secret.public_keys.arn,
-          aws_secretsmanager_secret.private_key_pem_1.arn,
-          aws_secretsmanager_secret.private_key_pem_2.arn,
-          aws_secretsmanager_secret.private_key_1.arn,
-          aws_secretsmanager_secret.private_key_2.arn
+          aws_secretsmanager_secret.secrets.arn
         ]
       }
     ]
   })
 
   depends_on = [ 
-    aws_secretsmanager_secret.public_keys
+    aws_secretsmanager_secret.secrets
   ]
 }
 
@@ -99,7 +95,7 @@ resource "aws_iam_role_policy_attachment" "attach_lambda_policy" {
 
 # Lambda function
 resource "aws_lambda_function" "lambda_function" {
-  function_name = lower("${var.secret_insert}_function")
+  function_name = lower(var.lambda_function_name)
   role          = aws_iam_role.lambda_execution_role.arn
   package_type  = "Image"
   image_uri     = local.repo_uri
@@ -117,9 +113,9 @@ resource "aws_lambda_invocation" "lambda_function" {
 
   input = jsonencode({
     account_identifier                = var.account_identifier
-    snowflake_user                    = var.service_account_user
+    snowflake_user                    = var.snowflake_user
     get_private_keys_from_aws_secrets = true,
-    secret_insert                     = lower(var.secret_insert)
+    secrets_path                      = lower(var.secrets_path)
   })
 
   lifecycle {
@@ -132,14 +128,14 @@ resource "aws_lambda_invocation" "lambda_function" {
 }
 
 resource "aws_secretsmanager_secret" "secrets" {
-    name = local.base_secrets_path
+    name = var.secrets_path
 }
 
 resource "aws_secretsmanager_secret_version" "secrets" {
     secret_id     = aws_secretsmanager_secret.secrets.id
     secret_string = jsonencode({"account_identifier": "<ACCOUNT_IDENTIFIER>",
                                 "snowflake_user": "<SNOWFLAKE_USER>",
-                                "root_secrets_path": "<ROOT_SECRETS_PATH>",
+                                "secrets_path": "<SECRETS_PATH>",
                                 "snowflake_rsa_public_key_1": "<SNOWFLAKE_RSA_PUBLIC_KEY_1>",
                                 "snowflake_rsa_public_key_2": "<SNOWFLAKE_RSA_PUBLIC_KEY_2>",
                                 "rsa_private_key_pem_1": "<RSA_PRIVATE_KEY_PEM_1>",

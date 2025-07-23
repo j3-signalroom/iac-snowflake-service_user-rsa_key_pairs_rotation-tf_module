@@ -22,8 +22,3 @@ output "rsa_jwt_2" {
     value       = local.key_pairs["rsa_jwt_2"]
     description = "The generated RSA JWT 2."
 }
-
-output "root_secrets_manager_secrets_path" {
-    value       = local.base_secrets_path
-    description = "The secrets path to the root secrets manager."
-}

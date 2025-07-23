@@ -8,15 +8,20 @@ variable "account_identifier" {
     type        = string
 }
 
-variable "service_account_user" {
-    description = "The Snowflake service account user who is to be assigned the RSA key pairs for its authentication."
+variable "snowflake_user" {
+    description = "The Snowflake user who is to be assigned the RSA key pairs for its authentication."
     type        = string
 }
 
-variable "secret_insert" {
-    description = "The insert string to be inserted into the AWS Secrets Manager secrets paths."
+variable "secrets_path" {
+    description = "The AWS Secrets Manager secrets paths."
     type        = string
     default     = ""
+}
+
+variable "lambda_function_name" {
+    description = "The name of the AWS Lambda function."
+    type        = string
 }
 
 variable "day_count" {
