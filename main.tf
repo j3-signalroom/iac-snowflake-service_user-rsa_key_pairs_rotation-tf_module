@@ -82,11 +82,7 @@ resource "aws_iam_policy" "lambda_policy" {
   })
 
   depends_on = [ 
-    aws_secretsmanager_secret.public_keys,
-    aws_secretsmanager_secret.private_key_1,
-    aws_secretsmanager_secret.private_key_2,
-    aws_secretsmanager_secret.private_key_pem_1,
-    aws_secretsmanager_secret.private_key_pem_2
+    aws_secretsmanager_secret.public_keys
   ]
 }
 
