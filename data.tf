@@ -15,5 +15,7 @@ locals {
     sorted_dates                 = sort(time_rotating.rsa_key_pair_rotations.*.rfc3339)
     dates_and_count              = zipmap(time_rotating.rsa_key_pair_rotations.*.rfc3339, range(local.number_of_rsa_key_pairs_to_retain))
     latest_rsa_public_key_number = lookup(local.dates_and_count, local.sorted_dates[0])
-    key_pairs                    = jsondecode(aws_lambda_invocation.lambda_function.result["body"])
+    lambda_response              = jsondecode(aws_lambda_invocation.lambda_function.result)
+    response_body                = jsondecode(local.lambda_response.body)
+    key_pairs                    = local.response_body.secrets
 }
