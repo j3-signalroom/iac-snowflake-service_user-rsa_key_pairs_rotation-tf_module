@@ -14,7 +14,4 @@ locals {
 
     sorted_dates        = sort(time_rotating.rsa_key_pair_rotations.*.rfc3339)
     dates_and_count     = zipmap(time_rotating.rsa_key_pair_rotations.*.rfc3339, range(local.key_pairs_to_retain))
-    key_number          = lookup(local.dates_and_count, local.sorted_dates[0])
-    key_pairs           = jsondecode(aws_lambda_invocation.lambda_function.result)["data"]
-
 }
