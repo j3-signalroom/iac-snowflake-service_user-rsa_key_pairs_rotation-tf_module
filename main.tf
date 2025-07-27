@@ -136,10 +136,12 @@ resource "aws_secretsmanager_secret_version" "secrets" {
     secret_string = jsonencode({"account_identifier": "<ACCOUNT_IDENTIFIER>",
                                 "snowflake_user": "<SNOWFLAKE_USER>",
                                 "secrets_path": "<SECRETS_PATH>",
-                                "snowflake_rsa_public_key_1": "<SNOWFLAKE_RSA_PUBLIC_KEY_1>",
-                                "snowflake_rsa_public_key_2": "<SNOWFLAKE_RSA_PUBLIC_KEY_2>",
-                                "rsa_private_key_pem_1": "<RSA_PRIVATE_KEY_PEM_1>",
-                                "rsa_private_key_pem_2": "<RSA_PRIVATE_KEY_PEM_2>"})
+                                "rsa_public_key_1_pem": "<RSA_PUBLIC_KEY_1_PEM>",
+                                "rsa_public_key_2_pem": "<RSA_PUBLIC_KEY_2_PEM>",
+                                "snowflake_rsa_public_key_1_pem": "<SNOWFLAKE_RSA_PUBLIC_KEY_1_PEM>",
+                                "snowflake_rsa_public_key_2_pem": "<SNOWFLAKE_RSA_PUBLIC_KEY_2_PEM>",
+                                "rsa_private_key_1_pem": "<RSA_PRIVATE_KEY_1_PEM>",
+                                "rsa_private_key_2_pem": "<RSA_PRIVATE_KEY_2_PEM>"})
 
     depends_on = [
         aws_secretsmanager_secret.secrets
