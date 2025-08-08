@@ -4,11 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is base on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
-## [0.51.00.000] - 2025-08-07
-### Added
-- Issue [#194](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/194)
-
-## [0.50.00.000] - 2025-08-02
+## [0.50.00.000] - 2025-08-08
 ### Added
 - Issue [#143](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/143)
 - Issue [#145](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/145)
@@ -17,12 +13,14 @@ The format is base on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), 
 - Issue [#160](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/160)
 - Issue [#188](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/188)
 - Issue [#190](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/190)
+- Issue [#194](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/194)
 
 ### Changed 
 - Issue [#165](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/165)
 - Issue [#175](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/175)
 - Issue [#177](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/177)
 - Issue [#186](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/186)
+- Issue [#196](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/196)
 
 ### Fixed 
 - Issue [#158](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/158)
