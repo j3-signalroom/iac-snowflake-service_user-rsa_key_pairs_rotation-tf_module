@@ -65,7 +65,7 @@ This flexibility makes the module highly reusable and easier to integrate into v
     Input Variable|Description
     -|-
     `aws_region`|The AWS Region the Terraform configuration uses.
-    `account_identifier`|The Snowflake Account identifer issued to your organization.
+    `snowflake_account_identifier`|The Snowflake Account identifer issued to your organization.
     `service_account_user`|The Snowflake service account user who is to be assigned the RSA key pairs for its authentication.
     `day_count`|_**(Optional and defaults to 30 days)**_  How many day(s) should the RSA key pairs be rotated for.
     `aws_lambda_memory_size`|_**(Optional and defaults to 128 MB)**_  Lambda allocates CPU power in proportion to the amount of memory configured. Memory is the amount of memory available to your Lambda function at runtime. You can increase or decrease the memory and CPU power allocated to your function using the Memory setting. You can configure memory between 128 MB and 10,240 MB in 1-MB increments. At 1,769 MB, a function has the equivalent of one vCPU (one vCPU-second of credits per second).
@@ -76,16 +76,16 @@ This flexibility makes the module highly reusable and easier to integrate into v
 
     Output Variable|Description
     -|-
-    `active_rsa_public_key_number`|Specifies current active RSA public key number.
-    `root_secrets_manager_secrets_path`|Specifies the root secrets path in AWS Secrets Manager where the RSA key pairs are stored.
+    `active_key_number`|Specifies current active RSA public key number.
+    `secrets_path`|Specifies the root secrets path in AWS Secrets Manager where the RSA key pairs are stored.
     `rsa_public_key_pem_1`|Specifies the first RSA public key in PEM format.
     `rsa_public_key_pem_2`|Specifies the second RSA public key in PEM format.
-    `rsa_private_key_pem_1`|Specifies the first RSA private key in PEM format.
-    `rsa_private_key_pem_2`|Specifies the second RSA private key in PEM format.
-    `rsa_private_key_1`|Specifies the first RSA private key.
-    `rsa_private_key_2`|Specifies the second RSA private key.
-    `rsa_public_key_jwt_1`|Specifies the first RSA public key in JWT format.
-    `rsa_public_key_jwt_2`|Specifies the second RSA public key in JWT format.
+    `snowflake_rsa_public_key_pem_1`|Specifies the first Snowflake RSA public key in PEM format.
+    `snowflake_rsa_public_key_pem_2`|Specifies the second Snowflake RSA public key in PEM format.
+    `snowflake_rsa_private_key_pem_1`|Specifies the first Snowflake RSA private key in PEM format.
+    `snowflake_rsa_private_key_pem_2`|Specifies the second Snowflake RSA private key in PEM format.
+    `snowflake_rsa_public_key_jwt_1`|Specifies the first Snowflake RSA public key in JWT format.
+    `snowflake_rsa_public_key_jwt_2`|Specifies the second Snowflake RSA public key in JWT format.
 
 ### 1.1 Visualizing the Terraform Configuration
 Below is the Terraform visualization of the Terraform configuration. It shows the resources and their dependencies, making the infrastructure setup easier to understand.

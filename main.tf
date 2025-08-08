@@ -112,7 +112,7 @@ resource "aws_lambda_invocation" "lambda_function" {
   function_name = aws_lambda_function.lambda_function.function_name
 
   input = jsonencode({
-    account_identifier                = var.account_identifier
+    snowflake_account_identifier      = var.snowflake_account_identifier
     snowflake_user                    = var.snowflake_user
     get_private_keys_from_aws_secrets = true,
     secrets_path                      = lower(var.secrets_path)
@@ -133,15 +133,15 @@ resource "aws_secretsmanager_secret" "secrets" {
 
 resource "aws_secretsmanager_secret_version" "secrets" {
     secret_id     = aws_secretsmanager_secret.secrets.id
-    secret_string = jsonencode({"account_identifier": "<ACCOUNT_IDENTIFIER>",
+    secret_string = jsonencode({"snowflake_account_identifier": "<SNOWFLAKE_ACCOUNT_IDENTIFIER>",
                                 "snowflake_user": "<SNOWFLAKE_USER>",
                                 "secrets_path": "<SECRETS_PATH>",
                                 "rsa_public_key_1_pem": "<RSA_PUBLIC_KEY_1_PEM>",
                                 "rsa_public_key_2_pem": "<RSA_PUBLIC_KEY_2_PEM>",
                                 "snowflake_rsa_public_key_1_pem": "<SNOWFLAKE_RSA_PUBLIC_KEY_1_PEM>",
                                 "snowflake_rsa_public_key_2_pem": "<SNOWFLAKE_RSA_PUBLIC_KEY_2_PEM>",
-                                "rsa_private_key_1_pem": "<RSA_PRIVATE_KEY_1_PEM>",
-                                "rsa_private_key_2_pem": "<RSA_PRIVATE_KEY_2_PEM>"})
+                                "snowflake_rsa_private_key_1_pem": "<SNOWFLAKE_RSA_PRIVATE_KEY_1_PEM>",
+                                "snowflake_rsa_private_key_2_pem": "<SNOWFLAKE_RSA_PRIVATE_KEY_2_PEM>"})
 
     depends_on = [
         aws_secretsmanager_secret.secrets
