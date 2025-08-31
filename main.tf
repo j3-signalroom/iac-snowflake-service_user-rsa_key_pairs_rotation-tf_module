@@ -7,10 +7,11 @@ terraform {
         }
   }
 
+  # Use the latest patch/minor but not a major upgrade
   required_providers {
         aws = {
             source  = "hashicorp/aws"
-            version = ">= 6.10.0"
+            version = "~> 6.0"
         }
     }
 }
