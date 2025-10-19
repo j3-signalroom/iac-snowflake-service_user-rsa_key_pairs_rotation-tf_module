@@ -5,56 +5,57 @@ The format is base on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), 
 
 ## [1.00.00.000] - TBD
 ### Changed
-- Issue [#202](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/202)
+- Issue [#202](https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module/issues/202)
+- Issue [#204](https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module/issues/204)
 
 ## [0.51.00.000] - 2025-08-31
 ### Changed
-- Issue [#200](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/200)
+- Issue [#200](https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module/issues/200)
 
 ## [0.50.00.000] - 2025-08-08
 ### Added
-- Issue [#143](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/143)
-- Issue [#145](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/145)
-- Issue [#148](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/148)
-- Issue [#150](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/150)
-- Issue [#160](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/160)
-- Issue [#188](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/188)
-- Issue [#190](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/190)
-- Issue [#194](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/194)
+- Issue [#143](https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module/issues/143)
+- Issue [#145](https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module/issues/145)
+- Issue [#148](https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module/issues/148)
+- Issue [#150](https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module/issues/150)
+- Issue [#160](https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module/issues/160)
+- Issue [#188](https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module/issues/188)
+- Issue [#190](https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module/issues/190)
+- Issue [#194](https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module/issues/194)
 
 ### Changed 
-- Issue [#165](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/165)
-- Issue [#175](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/175)
-- Issue [#177](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/177)
-- Issue [#186](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/186)
-- Issue [#196](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/196)
+- Issue [#165](https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module/issues/165)
+- Issue [#175](https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module/issues/175)
+- Issue [#177](https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module/issues/177)
+- Issue [#186](https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module/issues/186)
+- Issue [#196](https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module/issues/196)
 
 ### Fixed 
-- Issue [#158](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/158)
-- Issue [#162](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/162)
+- Issue [#158](https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module/issues/158)
+- Issue [#162](https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module/issues/162)
 
 ## [0.49.00.000] - 2025-07-15
 ### Added
-- Issue [#141](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/141)
+- Issue [#141](https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module/issues/141)
 
 ## [0.48.00.000] - 2025-07-15
 ### Added
-- Issue [#137](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/137)
+- Issue [#137](https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module/issues/137)
 
 ### Changed
-- Issue [#139](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/139)
+- Issue [#139](https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module/issues/139)
 
 ## [0.47.00.000] - 2025-06-03
 ### Changed
-- Issue [#133](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/133)
+- Issue [#133](https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module/issues/133)
 
 ## [0.46.01.000] - 2025-05-31
 ### Added
-- Issue [#131](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/131)
+- Issue [#131](https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module/issues/131)
 
 ## [0.46.00.000] - 2025-05-19
 ### Added
-- Issue [#128](https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module/issues/128)
+- Issue [#128](https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module/issues/128)
 
 ## [0.45.00.000] - 2025-04-19
 ### Changed
