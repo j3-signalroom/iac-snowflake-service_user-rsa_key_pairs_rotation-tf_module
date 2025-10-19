@@ -40,7 +40,7 @@ This flexibility makes the module highly reusable and easier to integrate into v
 
 2. Clone the repo:
     ```shell
-    git clone https://github.com/j3-signalroom/iac-snowflake-user-rsa_key_pairs_rotation-tf_module.git
+    git clone https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module.git
     ```
 
 3. Update the cloned Terraform module's [main.tf](main.tf) by following these steps:

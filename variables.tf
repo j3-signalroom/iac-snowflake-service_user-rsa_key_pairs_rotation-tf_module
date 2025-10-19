@@ -8,7 +8,7 @@ variable "snowflake_account_identifier" {
     type        = string
 }
 
-variable "snowflake_user" {
+variable "snowflake_service_user" {
     description = "The Snowflake user who is to be assigned the RSA key pairs for its authentication."
     type        = string
 }
