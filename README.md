@@ -20,7 +20,6 @@ This flexibility makes the module highly reusable and easier to integrate into v
 
 <!-- toc -->
 + [1.0 Let's get started!](#10-lets-get-started)
-    - [1.1 Visualizing the Terraform Configuration](#11-visualizing-the-terraform-configuration)
 + [2.0 Resources](#20-resources)
 <!-- tocstop -->
 
@@ -43,13 +42,7 @@ This flexibility makes the module highly reusable and easier to integrate into v
     git clone https://github.com/j3-signalroom/iac-snowflake-service_user-rsa_key_pairs_rotation-tf_module.git
     ```
 
-3. Update the cloned Terraform module's [main.tf](main.tf) by following these steps:
-
-    a. Locate the `terraform.cloud` block and replace **`signalroom`** with your [Terraform Cloud Organization Name](https://developer.hashicorp.com/terraform/cloud-docs/users-teams-organizations/organizations).
-
-    b. In the `terraform.cloud.workspaces` block, replace **`iac-snowflake-service-user-rsa-key-pairs-rotation-tf-module-workspace`** with your [Terraform Cloud Organization's Workspaces Name](https://developer.hashicorp.com/terraform/cloud-docs/workspaces).
-
-4.  Deploy your Terraform module to GitHub by following these steps:
+3.  Deploy your Terraform module to GitHub by following these steps:
 
 	a. **Commit your module:**  Ensure all changes to your Terraform module are committed to your local Git repository.
 
@@ -86,19 +79,6 @@ This flexibility makes the module highly reusable and easier to integrate into v
     `snowflake_rsa_private_key_pem_2`|Specifies the second Snowflake RSA private key in PEM format.
     `snowflake_rsa_public_key_jwt_1`|Specifies the first Snowflake RSA public key in JWT format.
     `snowflake_rsa_public_key_jwt_2`|Specifies the second Snowflake RSA public key in JWT format.
-
-### 1.1 Visualizing the Terraform Configuration
-Below is the Terraform visualization of the Terraform configuration. It shows the resources and their dependencies, making the infrastructure setup easier to understand.
-
-![Terraform Visulization](.blog/images/terraform-visualization.png)
-
-> **To fully view the image, open it in another tab on your browser to zoom in.**
-
-When you update the Terraform Configuration, to update the Terraform visualization, use the [`terraform graph`](https://developer.hashicorp.com/terraform/cli/commands/graph) command with [Graphviz](https://graphviz.org/) to generate a visual representation of the resources and their dependencies.  To do this, run the following command:
-
-```bash
-terraform graph | dot -Tpng > .blog/images/terraform-visualization.png
-```
 
 ## 2.0 Resources
 [Snowflake key pair authentication and key pair rotation](https://docs.snowflake.com/en/user-guide/key-pair-auth)
