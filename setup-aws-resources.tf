@@ -1,21 +1,3 @@
-terraform {
-    cloud {
-        organization ="signalroom"
-
-        workspaces {
-            name = "iac-snowflake-service-user-rsa-key-pairs-rotation-tf-module-workspace"
-        }
-  }
-
-  # Use the latest patch/minor but not a major upgrade
-  required_providers {
-        aws = {
-            source  = "hashicorp/aws"
-            version = "~> 6.0"
-        }
-    }
-}
-
 resource "aws_iam_role" "lambda_execution_role" {
   name = lower("${var.lambda_function_name}_role")
 
